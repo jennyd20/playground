@@ -72,7 +72,7 @@ num_tries = 5
 
 def dieroll(d):
     print("Rolling a " + str(d) + " sided die...")
-    print (random.randrange(1, d))
+    print (random.randint(1, d))
 
 size = input("What size die would you like to roll?  ")
 
