@@ -1,0 +1,132 @@
+Jenny Ross
+9/22/26
+Notes for how I approached the TryHackMe Mr. Roboto lab
+
+
+
+robots.txt
+User-agent: *
+fsocity.dic
+key-1-of-3.txt
+
+// Port scanning
+22/tcp  open  ssh
+80/tcp  open  http
+443/tcp open  https
+
+
+Intercepting a GET:
+wordpress_test_cookie=WP+Cookie+check
+
+
+// Banner curl -I 10.144.190.175        
+HTTP/1.1 200 OK
+Date: Wed, 23 Sep 2026 00:54:29 GMT
+Server: Apache
+X-Frame-Options: SAMEORIGIN
+Accept-Ranges: bytes
+Vary: Accept-Encoding
+X-Mod-Pagespeed: 1.9.32.3-4523
+Cache-Control: max-age=0, no-cache
+Content-Length: 1188
+Content-Type: text/html
+
+
+
+http://10.144.190.175/xmlrpc.php -> accepts POST requests only
+http://10.144.190.175/wp-cron.php
+wordpress theme: twentyfifteen, using wp version 4.3.1
+
+
+Live website
+Routes shown in the console:
+**10.144.188.97:15:217
+** ANY PAGE NOT FOUND
+Opens to a blog page
+Running http://wordpress.org/?v=4.3.1
+
+Loaded files:
+s_code.js
+includes a commented out code for "new or old site" (line 139)
+
+From main screen:
+*help - reprint listed options
+420 - quote from Bob Marley
+*prepare - video of giving money to people
+*fsociety - "Are you ready to join fsociety?"
+*inform - newspaper clippings and commentary, using /images/headlines/*
+*question - blacked out faces, using /images/question/*.jpg
+*wakeup - video of "conspiracy"
+*join - user input
+
+
+Other mentioned locations:
+/instructions
+/templates
+/track
+/lodash
+/backgone
+/superagent
+/menu
+/default
+
+                handleEmailResponse: function(t) {
+                    //"error" === t.body.type ? this.handleEmailError() : this.handleEmailSuccess()
+                    this.terminal.start(s.emailSuccess)
+                },
+
+
+
+Enumerating directories:
+/sitemap
+/intro
+/wp-login
+/license -> "what you do just pull code from Rapid9 or some s@#% since when did you become a script kitty?"
+/readme -> "I like where you head is at. However I'm not going to help you. "
+/robots --> ****FLAG****
+
+
+
+
+
+
+
+
+Loading text:
+GRUB loading
+Welcome to GRUB!
+Loading Linux 3.2.0-4-and64
+Loading initial ramdisk
+Loading, please wait
+[    2.194785] sd 0:0:0:0: [sda] Assuming drive cache: write through
+[    2.195284] sd 0:0:0:0: [sda] Assuming drive cache: write through
+[    2.196163] sd 0:0:0:0: [sda] Assuming drive cache: write through
+INIT: version 2.88 booting
+[<span class="bl">info</span>] Using makefile-style concurrent boot in runlevel S.
+[ <span class="gn">ok</span> ] Starting the hot plug events dispatcher: udevd.
+....] Synthesizing the initial hotplug events...[    2.700609] piix_smbus 0000:00:07.3: Host SMBus controller not enabled!
+done.
+[ <span class=\"gn\">ok</span> ] Waiting for /dev to be fully populated...[    3.061484] Error: Driver 'pc spkr' is already registered, aborting...
+done.
+[ <span class="gn">ok</span> ] Setting preliminary keymap...done.
+[ <span class="gn">ok</span> ] Activating swap...done.
+[....] Checking root file system...fsck from util-linux 2.20.1 /dev/sda1: clean, 38190/1256640 files, 341993/5016832 blocks
+done.
+[<span class="bl">info</span>] Loading kernel module loop.
+[ <span class="gn">ok</span> ] Cleaning up temporary files... /tmp.
+'[ <span class="gn">ok</span> ] Activating lvm and md swap...done.
+[....] Checking file systems...fsck from util-linux 2.20.1
+done.
+[....] Mounting local filesystems...done.
+
+
+
+
+Inspect:
+<!--
+\   //~~\ |   |    /\  |~~\|~~  |\  | /~~\~~|~~    /\  |  /~~\ |\  ||~~
+ \ /|    ||   |   /__\ |__/|--  | \ ||    | |     /__\ | |    || \ ||--
+  |  \__/  \_/   /    \|  \|__  |  \| \__/  |    /    \|__\__/ |  \||__
+-->
+
+

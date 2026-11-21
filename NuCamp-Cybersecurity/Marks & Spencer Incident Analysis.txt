@@ -1,0 +1,32 @@
+Jenny Ross
+Intro to Cybersecurity
+Week 1
+
+
+Research and Analyze a Recent Cybersecurity Incident
+Summary of the incident
+What kind of attack is this?
+Which cybersecurity objectives were compromised?
+What is at risk?
+Based on what you know so far, what will the company need to do to resolve this incident?
+
+
+The outward effects of the Marks & Spencer attack began over Easter Weekend in 2025, causing outages in their regular retail systems, including online orders and contactless payments. Several days later the company CEO received a ransomware message stating that the company had been hacked and all its servers had been encrypted. After online orders were suspended, stores used manual processes in physical locations to try to keep up with demand. Partial online purchasing functionality was restored in June almost 2 months after the first technological issues.
+
+The bad actors began by infiltrating a contractor of Marks & Spencer, an IT helpdesk company, via social engineering. They then compromised M&S itself through the internal helpdesk vector. User data was then exfiltrated before the ransomware attack kicked in, locking the company's servers and demanding payment. This attack compromised the confidentiality of user information and the company's daily sales operations, thus causing financial and operational harm. There is an ongoing risk of targeted spearfishing attacks using the customer data the hackers obtained (name, addresses, birthday, order histories). There is also the possibility that the hackers left a backdoor into M&S's network.
+
+Future mitigating processes could include:
+- stronger MFA tools, so accounts would be more secure despite the compromised passwords
+- more risk management of third parties (and minimizing their access to only the data that they strictly need) so the contractor's compromised accounts couldn't impact M&S
+- isolating subnetworks so compromised machines in one area couldn't spread to the whole network
+- more thorough user verification so the phishing attacks wouldn't have succeeded
+- stronger employee training to catch sophisticated phishing attacks
+- an IPS to catch the migration of sensitive data out of the network so the hack could have been detected earlier, data could have been secured, and the problem isolated before it became a major incident
+- offline backups so M&S could readily recover their data despite the ransomware
+- the information source is from company that sells anti data exfiltration software, and the article made a point of specifying how their product would have helped prevent this security incident by catching the attack earlier
+
+I find the social engineering aspect of this attack most interesting - what is the balance between security and efficiency? How can systems be put in place to thoroughly validate requests without substantially hampering the work of a legitimate employee? I also find it interesting (and disappointing) that it took so long for Marks & Spencer to recover from this attack. It has not been publicly disclosed whether a ransom was paid.
+
+
+References
+Harpur, Rebecca. "Marks & Spencer Breach: How A Ransomware Attack Crippled a UK Retail Giant". Blackfog News. Updated October 31st, 2025. https://www.blackfog.com/marks-and-spencer-ransomware-attack/

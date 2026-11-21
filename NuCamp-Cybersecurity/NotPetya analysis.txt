@@ -1,0 +1,14 @@
+Jenny Ross
+07/04/2026
+
+NotPetya Analysis
+
+EternalBlue is a software exploit developed by the NSA and leaked 10 months before the NotPetya attack. It uses a flaw in the Server Message Block v1 protocol to cause a buffer overflow and allow malicious code to execute at the kernel level (CVE-2017-0144). It uses exposed SMB ports to jump from one vulnerable machine to the next. More technical details available at: https://www.sentinelone.com/blog/eternalblue-nsa-developed-exploit-just-wont-die/. While Microsoft released a patch in 2017, there are still around a million unpatched machines that have not been patched and are therefore still vulnerable.
+
+Mimikatz is an open source tool to extract authentication information from RAM. This is used after a system is compromised to gain unauthorized access, escalate privileges, or move laterally to other systems. It can bypass MFA by using already established credentials, even if those credentials were originally authenticated with certain kinds of MFA.. It can be loaded directly into memory, so attacks can be executed without anything written to a target's disk - this makes it much harder to be detected by outdated EDR solutions.
+
+In the case of NotPetya, the malware first infiltrated systems through a regular update of MED, a Ukrainian tax account software. Once machines installed the update, NotPetya was able to use EternalBlue to run code at the kernel level and spread to machines in the network. However, if a machine was patched and secure against EternalBlue, the attackers used Mimikatz to extract credentials which, one obtained, allowed NotPetya to use existing Windows tools to connect to other network devices and continue its spread.
+
+Users typically download patches and updates to existing software without second thought, so the idea that one of those might be compromised is terrifying. However, a properly hardened machine and network would have been able to mitigate the attack. Examples of defensive security measures that helped in the NotPetya attack include complete patching, thorough EDR mechanisms, disabling outdated protocols and systems (such as SMBv1), segregating networks, and using the principle of least privilege. Another improved security method would be to use a hardware MFA key such as Yubikey. For systems that were compromised, recovery would have been a lot faster and simpler with regular and thorough offline and/or cloud-based backups.
+
+Key takeaways for me: always segregate networks, always use least privilege, and always apply patches in a timely manner. While it is unlikely that my personal network would be a target for attackers, it is still worth disabling outdated protocols and systems in Windows (which, frankly, should be opt-in rather than opt-out by default anyway).
